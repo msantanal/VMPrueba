@@ -20,7 +20,7 @@ resource "azurerm_network_interface" "NIC" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = data.azurerm_virtual_network.Vnet.Subnet.*.id
+    subnet_id                     = data.azurerm_virtual_network.vnet.subnet.*.id
     private_ip_address_allocation = "Dynamic"
   }
 }
