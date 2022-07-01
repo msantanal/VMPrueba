@@ -2,7 +2,7 @@ data "azurerm_resource_group" "RG" {
   name = var.resource_group_name
 }
 
-data "azurerm_subnet" "subnet" {
+data "azurerm_subnet" "Subnet" {
   name = var.name_subnet
 }
 
@@ -13,7 +13,7 @@ resource "azurerm_network_interface" "NIC" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = data.azurerm_subnet.subnet.id
+    subnet_id                     = data.azurerm_subnet.Subnet.id
     private_ip_address_allocation = "Dynamic"
   }
 }
