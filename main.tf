@@ -10,6 +10,9 @@ output "subnet_ids" {
      value = "${data.azurerm_subnet.Subnet.*.id}"
 }
 
+data "azurerm_virtual_network" "Vnet" {
+}
+  
 resource "azurerm_network_interface" "NIC" {
   name                = var.name_nic
   location            = data.azurerm_resource_group.RG.location
@@ -17,7 +20,7 @@ resource "azurerm_network_interface" "NIC" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = data.azurerm_virtual_network.vnet.subnet.*.id
+    subnet_id                     = data.azurerm_virtual_network.Vnet.Subnet.*.id
     private_ip_address_allocation = "Dynamic"
   }
 }
