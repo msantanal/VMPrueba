@@ -27,6 +27,6 @@ variable "sku" {
 }
 
 
-variable "name_vnet2" {
+variable "virtual_network_name" {
   type        = string
 }
