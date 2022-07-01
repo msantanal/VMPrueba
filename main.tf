@@ -3,7 +3,7 @@ data "azurerm_resource_group" "RG" {
 }
 
 data "azurerm_virtual_network" "Vnet" {
-  name                = "vnetpocpruebae353"
+  name                = var.name_vnet
   resource_group_name = data.azurerm_resource_group.RG.name
 }
 
