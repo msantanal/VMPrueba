@@ -12,7 +12,7 @@ data "azurerm_subnet" "Subnet" {
 }
 
 
-output "subnets_ids" {
+output "subnets_id" {
   value = data.azurerm_subnet.Subnet.*.id
 }
 
