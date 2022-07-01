@@ -26,3 +26,6 @@ variable "offer" {
 variable "sku" {
   type        = string
 }
+variable "name_vnet" {
+  type        = string
+}
