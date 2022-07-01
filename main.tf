@@ -2,6 +2,11 @@ data "azurerm_resource_group" "RG" {
   name = var.resource_group_name
 }
 
+data "azurerm_virtual_network" "Vnet" {
+  name                = var.name_vnet
+  resource_group_name = data.azurerm_resource_group.RG.name
+}
+
 data "azurerm_subnet" "Subnet" {
   name                 = var.subnet_name
   virtual_network_name = data.azurerm_virtual_network.Vnet.name
