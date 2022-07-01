@@ -2,9 +2,24 @@ data "azurerm_resource_group" "RG" {
   name = var.resource_group_name
 }
 
+
+
 data "azurerm_subnet" "Subnet" {
-  name = var.name_subnet
+    name                 = data.azurerm_virtual_network.Vnet.subnets[count.index]
+    virtual_network_name = data.azurerm_virtual_network.Vnet.name
+    resource_group_name  = data.azurerm_virtual_network.Vnet.resource_group_name
+    count                = length(data.azurerm_virtual_network.Vnet.subnets)
 }
+
+
+output "virtualnetwork_subnets_ids" {
+  value = data.azurerm_subnet.Subnet.*.id
+}
+
+
+
+
+
 
 resource "azurerm_network_interface" "NIC" {
   name                = var.name_nic
