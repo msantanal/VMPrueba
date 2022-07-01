@@ -8,7 +8,7 @@ data "azurerm_virtual_network" "Vnet" {
 }
 
 output "subnet_id" {
-  value = data.azurerm_virtual_network.Vnet.subnet.id
+  value = data.azurerm_virtual_network.Vnet.subnets.id
 }
 
 
