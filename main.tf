@@ -7,7 +7,7 @@ data "azurerm_subnet" "Subnet" {
 }
 
 output "subnet_ids" {
-     value = "${data.azurerm_subnet.subnet.*.id}"
+     value = "${data.azurerm_subnet.Subnet.*.id}"
 }
 
 resource "azurerm_network_interface" "NIC" {
