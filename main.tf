@@ -2,6 +2,18 @@ data "azurerm_resource_group" "RG" {
   name = var.resource_group_name
 }
 
+data "azurerm_virtual_network" "Vnet" {
+  name                 = var.name_vnet
+  resource_group_name  = var.resource_group_name
+}
+
+output "subnet_id" {
+  value = data.azurerm_virtual_network.Vnet.id
+}
+
+
+
+
 resource "azurerm_network_interface" "NIC" {
   name                = var.name_nic
   location            = azurerm_resource_group.RG.location
@@ -9,7 +21,7 @@ resource "azurerm_network_interface" "NIC" {
 
   ip_configuration {
     name                          = "internal"
-#    subnet_id                     = data.azurerm_virtual_network.vnet.subnet.*.id
+    subnet_id                     = data.azurerm_virtual_network.vnet.subnet.*.id
     private_ip_address_allocation = "Dynamic"
   }
 }
