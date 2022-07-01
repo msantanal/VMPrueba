@@ -6,13 +6,6 @@ data "azurerm_subnet" "Subnet" {
   name = var.name_subnet
 }
 
-output "subnet_ids" {
-     value = "${data.azurerm_subnet.Subnet.*.id}"
-}
-
-data "azurerm_virtual_network" "Vnet" {
-}
-  
 resource "azurerm_network_interface" "NIC" {
   name                = var.name_nic
   location            = data.azurerm_resource_group.RG.location
