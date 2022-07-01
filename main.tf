@@ -4,16 +4,17 @@ data "azurerm_resource_group" "RG" {
 
 
 
-data "azurerm_subnet" "Subnet" {
-    name                 = data.azurerm_virtual_network.Vnet.subnets[count.index]
-    virtual_network_name = data.azurerm_virtual_network.Vnet.name
-    resource_group_name  = data.azurerm_virtual_network.Vnet.resource_group_name
-    count                = length(data.azurerm_virtual_network.Vnet.subnets)
+
+data "azurerm_virtual_network" "Vnet" {
+  name                 = module.Vnet.name
+  resource_group_name  = module.RG.name
 }
 
-
-output "subnets_id" {
-  value = data.azurerm_subnet.Subnet.*.id
+data "azurerm_subnet" "Subnet" {
+  for_each            = toset(data.azurerm_virtual_network.Vnet.subnets)
+  name                 = each.value
+  virtual_network_name = "${data.azurerm_virtual_network.Vnet.name}"
+  resource_group_name  = "${data.azurerm_virtual_network.Vnet.resource_group_name}"
 }
 
 
