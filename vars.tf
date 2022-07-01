@@ -10,7 +10,6 @@ variable "name_nic" {
 variable "name_vm_windows_2019" {
   type        = string
 }
-
 variable "admin_username" {
   type        = string
 }
@@ -24,5 +23,10 @@ variable "offer" {
   type        = string
 }
 variable "sku" {
+  type        = string
+}
+
+
+variable "name_vnet" {
   type        = string
 }
