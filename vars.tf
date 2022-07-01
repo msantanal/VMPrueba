@@ -27,6 +27,6 @@ variable "sku" {
 }
 
 
-variable "name_vnet" {
+variable "name_vnet2" {
   type        = string
 }
