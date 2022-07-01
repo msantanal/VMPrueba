@@ -2,6 +2,10 @@ data "azurerm_resource_group" "RG" {
   name = var.resource_group_name
 }
 
+data "azurerm_subnet" "subnet" {
+  name = var.name_subnet
+}
+
 resource "azurerm_network_interface" "NIC" {
   name                = var.name_nic
   location            = data.azurerm_resource_group.RG.location
@@ -9,7 +13,7 @@ resource "azurerm_network_interface" "NIC" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.subnet.id
+    subnet_id                     = data.azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
   }
 }
@@ -34,6 +38,6 @@ resource "azurerm_windows_virtual_machine" "VM_windows_2019" {
     publisher = var.publisher
     offer     = var.offer
     sku       = var.sku
-    version   = "latest"
+    version   = var.version
   }
 }
