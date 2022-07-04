@@ -18,8 +18,8 @@ data "azurerm_subnet" "Subnet" {
 
 resource "azurerm_network_interface" "NIC" {
   name                = var.name_nic
-  location            = azurerm_resource_group.RG.location
-  resource_group_name = azurerm_resource_group.RG.name
+  location            = data.azurerm_resource_group.RG.location
+  resource_group_name = data.azurerm_resource_group.RG.name
 
   ip_configuration {
     name                          = "internal"
