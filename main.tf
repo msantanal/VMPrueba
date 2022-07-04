@@ -48,6 +48,6 @@ resource "azurerm_windows_virtual_machine" "VM_windows_2019" {
     publisher = var.publisher
     offer     = var.offer
     sku       = var.sku
-    version   = var.version
+    version   = "latest"
   }
 }
