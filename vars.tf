@@ -25,11 +25,6 @@ variable "offer" {
 variable "sku" {
   type        = string
 }
-
-
 variable "virtual_network_name" {
-  type        = string
-}
-variable "version" {
   type        = string
 }
