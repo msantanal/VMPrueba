@@ -32,7 +32,7 @@ resource "azurerm_windows_virtual_machine" "VM_windows_2019" {
   name                = var.name_vm_windows_2019
   resource_group_name = data.azurerm_resource_group.RG.name
   location            = data.azurerm_resource_group.RG.location
-  size                = "Standard_DC1s_v3"
+  size                = "Standard_B2ms"
   admin_username      = var.admin_username
   admin_password      = var.admin_password
   network_interface_ids = [
