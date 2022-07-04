@@ -30,8 +30,8 @@ resource "azurerm_network_interface" "NIC" {
 
 resource "azurerm_windows_virtual_machine" "VM_windows_2019" {
   name                = var.name_vm_windows_2019
-  resource_group_name = azurerm_resource_group.RG.name
-  location            = azurerm_resource_group.RG.location
+  resource_group_name = data.azurerm_resource_group.RG.name
+  location            = data.azurerm_resource_group.RG.location
   size                = "Standard_F2"
   admin_username      = var.admin_username
   admin_password      = var.admin_password
